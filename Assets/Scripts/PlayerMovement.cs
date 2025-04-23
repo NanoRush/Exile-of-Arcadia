@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -108,8 +109,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 ls = transform.localScale;
             ls.x *= -1f;
             transform.localScale = ls;
+            gameObject.transform.GetChild(2).gameObject.GetComponent<Cursor>().Flip();
         }
-
     }
 
 }

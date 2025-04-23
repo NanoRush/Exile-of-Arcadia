@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: a279af341907f32418a8b85b2604156f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Dagger: {fileID: 1817098134326882671, guid: e6c426a4c5fc6ed4ab3290608158a7fe, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
