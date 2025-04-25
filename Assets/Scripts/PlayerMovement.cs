@@ -81,7 +81,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
 
         if (isSliding)
         {
@@ -91,6 +90,10 @@ public class PlayerMovement : MonoBehaviour
         if (wallJumping)
         {
             rb.velocity = new Vector2(-horizontal * wallJumpForce.x, wallJumpForce.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
         }
 
 
@@ -111,6 +114,12 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = ls;
             gameObject.transform.GetChild(2).gameObject.GetComponent<Cursor>().Flip();
         }
+    }
+
+    public void Teleport(Vector3 daggerLocation, Vector3 daggerVelocity)
+    {
+        transform.position = daggerLocation;
+        rb.velocity = daggerVelocity;
     }
 
 }

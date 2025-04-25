@@ -43,12 +43,15 @@ public class DaggerScript : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
             Destroy(gameObject);
+            player.GetComponent<PlayerMovement>().Teleport(transform.position, rb.velocity);
         }
 
     }
 
+    
+
     private void OnDestroy()
     {
-        player.GetComponent<PlayerAttack>().DaggerReset();
+        player.GetComponent<PlayerAttack>().daggerReset();
     }
 }

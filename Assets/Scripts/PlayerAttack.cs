@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         daggerCount++;
     }
 
-    public void DaggerReset()
+    public void daggerReset()
     {
         daggerCount = 0;
     }
