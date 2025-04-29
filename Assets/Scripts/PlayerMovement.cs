@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     private float horizontal;
-    private float moveSpeed = 8f;
+    public float moveSpeed;
     [SerializeField] float jumpPower;
 
     public Transform groundCheck;
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 17f);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 15f);
 
     }
 
