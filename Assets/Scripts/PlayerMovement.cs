@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     bool isGrounded;
 
+    public float teleportBoost;
+
     private int jumpCount = 0;
 
     private bool teleporting = false;
@@ -129,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
     public void Teleport(Vector3 daggerLocation, Vector3 daggerVelocity)
     {
         transform.position = daggerLocation;
-        rb.velocity = daggerVelocity * 0.5f;
+        rb.velocity = daggerVelocity * teleportBoost;
         teleporting = true;
     }
 
