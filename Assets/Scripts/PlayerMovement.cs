@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     private int jumpCount = 0;
 
+    private bool teleporting = false;
+
     //Wall Jump
     public Transform wallCheck;
     public LayerMask wallLayer;
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 17f);
 
     }
 
@@ -45,9 +48,11 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.28f, 0.48f), CapsuleDirection2D.Horizontal, 0, groundLayer);
         isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.38f, 2.46f), 0, wallLayer);
 
+
         if (isGrounded)
         {
             jumpCount = 1;
+            teleporting = false;
         }
 
         if(isWallTouch && !isGrounded && horizontal != 0f)
@@ -85,11 +90,16 @@ public class PlayerMovement : MonoBehaviour
         if (isSliding)
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            teleporting = false;
         }
 
         if (wallJumping)
         {
             rb.velocity = new Vector2(-horizontal * wallJumpForce.x, wallJumpForce.y);
+        }
+        else if (teleporting)
+        {
+            rb.AddForce(new Vector2(horizontal * moveSpeed, rb.velocity.y));
         }
         else
         {
@@ -119,7 +129,8 @@ public class PlayerMovement : MonoBehaviour
     public void Teleport(Vector3 daggerLocation, Vector3 daggerVelocity)
     {
         transform.position = daggerLocation;
-        rb.velocity = daggerVelocity;
+        rb.velocity = daggerVelocity * 0.5f;
+        teleporting = true;
     }
 
 }
