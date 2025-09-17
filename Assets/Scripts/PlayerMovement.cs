@@ -106,27 +106,29 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector2(-horizontal * wallJumpForce.x, wallJumpForce.y), ForceMode2D.Impulse);
         }
-
-        /*
-        else if (teleporting)
-        {
-            rb.AddForce(new Vector2(horizontal * moveSpeed * 2, rb.velocity.y));
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, 20f);
-        }
         else
         {
-            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-        }*/
+            /*
+            else if (teleporting)
+            {
+                rb.AddForce(new Vector2(horizontal * moveSpeed * 2, rb.velocity.y));
+                rb.velocity = Vector2.ClampMagnitude(rb.velocity, 20f);
+            }
+            else
+            {
+                rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            }*/
 
-        float targetSpeed = horizontal * moveSpeed;
-        
-        float speedDif = targetSpeed - rb.velocity.x;
+            float targetSpeed = horizontal * moveSpeed;
 
-        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+            float speedDif = targetSpeed - rb.velocity.x;
 
-        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+            float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
 
-        rb.AddForce(movement * Vector2.right);
+            float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+
+            rb.AddForce(movement * Vector2.right);
+        }
 
         if (rb.velocity.y < 0)
         {
