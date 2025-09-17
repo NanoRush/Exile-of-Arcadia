@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
     public float moveSpeed;
+    public float acceleration;
+    public float decceleration;
+    public float velPower;
+    public float fallGravityMultiplier;
     [SerializeField] float jumpPower;
 
     public Transform groundCheck;
@@ -32,12 +36,15 @@ public class PlayerMovement : MonoBehaviour
 
     bool isFacingRight = true;
 
+    private float gravityScale;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 15f);
+        gravityScale = rb.gravityScale;
 
     }
 
@@ -88,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        
         if (isSliding)
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
@@ -97,18 +104,38 @@ public class PlayerMovement : MonoBehaviour
 
         if (wallJumping)
         {
-            rb.velocity = new Vector2(-horizontal * wallJumpForce.x, wallJumpForce.y);
+            rb.AddForce(new Vector2(-horizontal * wallJumpForce.x, wallJumpForce.y), ForceMode2D.Impulse);
         }
+
+        /*
         else if (teleporting)
         {
-            rb.AddForce(new Vector2(horizontal * moveSpeed, rb.velocity.y));
+            rb.AddForce(new Vector2(horizontal * moveSpeed * 2, rb.velocity.y));
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, 20f);
         }
         else
         {
             rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+        }*/
+
+        float targetSpeed = horizontal * moveSpeed;
+        
+        float speedDif = targetSpeed - rb.velocity.x;
+
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+
+        float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+
+        rb.AddForce(movement * Vector2.right);
+
+        if (rb.velocity.y < 0)
+        {
+            rb.gravityScale = gravityScale * fallGravityMultiplier;
         }
-
-
+        else
+        {
+            rb.gravityScale = gravityScale;
+        }
     }
 
     void StopWallJump()
@@ -133,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = daggerLocation;
         rb.velocity = daggerVelocity * teleportBoost;
         teleporting = true;
+        jumpCount = 1;
     }
 
 }
