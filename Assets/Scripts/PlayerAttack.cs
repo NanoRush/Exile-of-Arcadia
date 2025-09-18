@@ -8,10 +8,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform Dagger;
     public Transform daggerTransform;
     private int daggerCount = 0;
+    private AudioSource source;
+    public AudioClip daggerSwipeSound;
     // Start is called before the first frame update
     void Start()
     {
-     
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Instantiate(Dagger, daggerTransform.position, Quaternion.identity);
         daggerCount++;
+        source.PlayOneShot(daggerSwipeSound);
     }
 
     public void daggerReset()

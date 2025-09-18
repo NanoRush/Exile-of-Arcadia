@@ -24,15 +24,20 @@ public class PlayerMovement : MonoBehaviour
 
     private bool teleporting = false;
 
+    public AudioClip teleportSound;
+    private AudioSource source;
+
     //Wall Jump
     public Transform wallCheck;
     public LayerMask wallLayer;
     bool isWallTouch;
     bool isSliding;
     public float wallSlidingSpeed;
-    public float wallJumpDuration = 0.1f;
+    public float wallJumpDuration = 0.4f;
     public Vector2 wallJumpForce;
     bool wallJumping;
+    public float wallJumpingDirection;
+    private float wallJumpingTime = 0.2f;
 
     bool isFacingRight = true;
 
@@ -45,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 15f);
         gravityScale = rb.gravityScale;
+        source = GetComponent<AudioSource>();
 
     }
 
@@ -80,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
             if (isSliding)
             {
                 wallJumping = true;
+                FlipSprite();
                 Invoke("StopWallJump", wallJumpDuration);
             }
             else if (jumpCount < 2)
@@ -163,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = daggerVelocity * teleportBoost;
         teleporting = true;
         jumpCount = 1;
+        source.PlayOneShot(teleportSound);
     }
 
 }
