@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform groundCheck;
     public LayerMask groundLayer;
-    bool isGrounded;
 
     public float teleportBoost;
 
@@ -30,14 +29,14 @@ public class PlayerMovement : MonoBehaviour
     //Wall Jump
     public Transform wallCheck;
     public LayerMask wallLayer;
-    bool isWallTouch;
     bool isSliding;
     public float wallSlidingSpeed;
     public float wallJumpDuration = 0.4f;
     public Vector2 wallJumpForce;
     bool wallJumping;
-    public float wallJumpingDirection;
+    private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
+    private float wallJumpingCounter;
 
     bool isFacingRight = true;
 
@@ -58,38 +57,22 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
-        FlipSprite();
+        if (!wallJumping)
+        {
+            FlipSprite();
+        }
 
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.28f, 0.48f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-        isWallTouch = Physics2D.OverlapBox(wallCheck.position, new Vector2(0.38f, 2.46f), 0, wallLayer);
 
-
-        if (isGrounded)
+        if (isGrounded())
         {
             jumpCount = 1;
             teleporting = false;
         }
 
-        if(isWallTouch && !isGrounded && horizontal != 0f)
-        {
-            isSliding = true;
-        }
-        else
-        {
-            isSliding = false;
-        }
-
-
         if (Input.GetButtonDown("Jump"))
         {
 
-            if (isSliding)
-            {
-                wallJumping = true;
-                FlipSprite();
-                Invoke("StopWallJump", wallJumpDuration);
-            }
-            else if (jumpCount < 2)
+            if (jumpCount < 2)
             {
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
                 //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
@@ -98,23 +81,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        WallSlide();
+        WallJump();
+
     }
 
     private void FixedUpdate()
     {
-        
-        if (isSliding)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-            teleporting = false;
-        }
 
-        if (wallJumping)
-        {
-            rb.AddForce(new Vector2(-horizontal * wallJumpForce.x, wallJumpForce.y), ForceMode2D.Impulse);
-        }
-        else
-        {
+        if(!wallJumping){
             /*
             else if (teleporting)
             {
@@ -152,6 +127,39 @@ public class PlayerMovement : MonoBehaviour
         wallJumping = false;
     }
 
+    private void WallJump()
+    {
+        if (isSliding)
+        {
+            wallJumping = false;
+            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingCounter = wallJumpingTime;
+
+            CancelInvoke(nameof(StopWallJump));
+        }
+        else
+        {
+            wallJumpingCounter -= Time.deltaTime;
+        }
+        if(Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        {
+            wallJumping = true;
+            rb.velocity = new Vector2(wallJumpingDirection * wallJumpForce.x, wallJumpForce.y);
+            wallJumpingCounter = 0f;
+
+            if (transform.localScale.x != wallJumpingDirection)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+                gameObject.transform.GetChild(2).gameObject.GetComponent<Cursor>().Flip();
+            }
+
+            Invoke(nameof(StopWallJump), wallJumpDuration);
+        }
+    }
+
     void FlipSprite()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -172,5 +180,29 @@ public class PlayerMovement : MonoBehaviour
         jumpCount = 1;
         source.PlayOneShot(teleportSound);
     }
+
+    private bool isGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.28f, 0.48f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+    }
+
+    private bool isWallTouch()
+    {
+        return Physics2D.OverlapBox(wallCheck.position, new Vector2(0.38f, 2.46f), 0, wallLayer);
+    }
+
+    private void WallSlide()
+    {
+        if (isWallTouch() && !isGrounded() && horizontal != 0f)
+        {
+            isSliding = true;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        else
+        {
+            isSliding = false;
+        }
+    }
+
 
 }
