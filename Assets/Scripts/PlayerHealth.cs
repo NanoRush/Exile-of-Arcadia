@@ -7,10 +7,14 @@ public class PlayerHealth : MonoBehaviour
 {
 
     public int health;
+    private SpriteRenderer SpriteRenderer;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         health = 1;
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -18,7 +22,10 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health <= 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            SpriteRenderer.sprite = null;
+            rb.simulated = false;
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            Invoke(nameof(Reload), 0.8f);
         }
     }
 
@@ -29,4 +36,10 @@ public class PlayerHealth : MonoBehaviour
             health--;
         }
     }
+
+    private void Reload()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
 }

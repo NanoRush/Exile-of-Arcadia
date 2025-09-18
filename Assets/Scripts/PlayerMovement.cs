@@ -90,26 +90,24 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if(!wallJumping){
-            /*
-            else if (teleporting)
+
+            if (teleporting)
             {
                 rb.AddForce(new Vector2(horizontal * moveSpeed * 2, rb.velocity.y));
                 rb.velocity = Vector2.ClampMagnitude(rb.velocity, 20f);
             }
             else
             {
-                rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
-            }*/
+                float targetSpeed = horizontal * moveSpeed;
 
-            float targetSpeed = horizontal * moveSpeed;
+                float speedDif = targetSpeed - rb.velocity.x;
 
-            float speedDif = targetSpeed - rb.velocity.x;
+                float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
 
-            float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+                float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
 
-            float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-
-            rb.AddForce(movement * Vector2.right);
+                rb.AddForce(movement * Vector2.right);
+            }
         }
 
         if (rb.velocity.y < 0)
