@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public int health;
     private SpriteRenderer SpriteRenderer;
     private Rigidbody2D rb;
+    public Canvas canvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
             SpriteRenderer.sprite = null;
             rb.simulated = false;
             gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            canvas.transform.GetChild(0).gameObject.SetActive(true);
             Invoke(nameof(Reload), 0.8f);
         }
     }

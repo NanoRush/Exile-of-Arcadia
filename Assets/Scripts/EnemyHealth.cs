@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sp;
     public int health;
+    public GameObject explosion; 
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             sp.enabled = false;
             rb.simulated = false;
             Invoke("Respawn", 5);
