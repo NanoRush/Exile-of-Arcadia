@@ -195,6 +195,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            teleporting = false;
         }
         else
         {

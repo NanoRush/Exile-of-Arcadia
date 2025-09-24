@@ -171,4 +171,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694eb5a3a5c13d146ad2c9914c94a483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  daggerSpeed: 15
+  daggerSpeed: 18
