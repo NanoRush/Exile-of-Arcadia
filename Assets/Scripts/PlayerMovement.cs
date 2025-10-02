@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -91,23 +91,57 @@ public class PlayerMovement : MonoBehaviour
 
         if(!wallJumping){
 
+            float currentVelX = rb.velocity.x;
+            float targetSpeed = horizontal * moveSpeed;
+            float accelRate;
+
             if (teleporting)
             {
-                rb.AddForce(new Vector2(horizontal * moveSpeed * 2, rb.velocity.y));
-                rb.velocity = Vector2.ClampMagnitude(rb.velocity, 20f);
+                if (horizontal != 0 && Mathf.Sign(horizontal) != Mathf.Sign(currentVelX))
+                {
+                    // Opposite input → brake to 0 first
+                    targetSpeed = 0f;
+                    accelRate = decceleration * 0.2f; // strong braking
+
+                    // Once nearly stopped, exit teleport state
+                    if (Mathf.Abs(currentVelX) < 0.2f)
+                    {
+                        Debug.Log(currentVelX);
+                        teleporting = false;
+                    }
+                }
+                else
+                {
+                    // Same direction or no input → preserve teleport momentum
+                    accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+
+                    if (Mathf.Abs(currentVelX) > moveSpeed &&
+                        Mathf.Sign(currentVelX) == Mathf.Sign(horizontal) &&
+                        !isGrounded())
+                    {
+                        targetSpeed = currentVelX;
+                    }
+                }
             }
             else
             {
-                float targetSpeed = horizontal * moveSpeed;
+                // --- NORMAL MOVEMENT RULES ---
+                if (Mathf.Abs(currentVelX) > moveSpeed &&
+                    Mathf.Sign(currentVelX) == Mathf.Sign(horizontal) &&
+                    !isGrounded())
+                {
+                    targetSpeed = currentVelX;
+                }
 
-                float speedDif = targetSpeed - rb.velocity.x;
-
-                float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
-
-                float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
-
-                rb.AddForce(movement * Vector2.right);
+                accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
             }
+
+            // Apply force
+            float speedDif = targetSpeed - currentVelX;
+            float movement = Mathf.Pow(Mathf.Abs(speedDif) * accelRate, velPower) * Mathf.Sign(speedDif);
+
+            rb.AddForce(movement * Vector2.right);
+
         }
 
         if (rb.velocity.y < 0)
@@ -173,10 +207,11 @@ public class PlayerMovement : MonoBehaviour
     public void Teleport(Vector3 daggerLocation, Vector3 daggerVelocity)
     {
         transform.position = daggerLocation;
-        rb.velocity = daggerVelocity * teleportBoost;
+        rb.velocity = daggerVelocity.normalized * teleportBoost;
         teleporting = true;
         jumpCount = 1;
         source.PlayOneShot(teleportSound);
+        Invoke(nameof(stopTeleport), 0.5f);
     }
 
     private bool isGrounded()
@@ -187,6 +222,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isWallTouch()
     {
         return Physics2D.OverlapBox(wallCheck.position, new Vector2(0.38f, 2.46f), 0, wallLayer);
+    }
+
+    private void stopTeleport()
+    {
+        teleporting = false;
     }
 
     private void WallSlide()

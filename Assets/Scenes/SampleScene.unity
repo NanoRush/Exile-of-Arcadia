@@ -633,7 +633,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  teleportBoost: 5
+  teleportBoost: 25
   teleportSound: {fileID: 8300000, guid: 82319814b2df1f3439bfe0ad90c576ef, type: 3}
   wallCheck: {fileID: 1354411418}
   wallLayer:
