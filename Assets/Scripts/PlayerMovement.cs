@@ -23,8 +23,15 @@ public class PlayerMovement : MonoBehaviour
 
     private bool teleporting = false;
 
+    //Audio and Visual
     public AudioClip teleportSound;
+    public AudioClip jumpSound;
+    public AudioClip wallJumpSound;
     private AudioSource source;
+
+    public ParticleSystem jumpSmoke;
+    public ParticleSystem wallJumpSmokeTrail;
+    public ParticleSystem teleportTrail;
 
     //Wall Jump
     public Transform wallCheck;
@@ -69,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             teleporting = false;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !wallJumping && !isSliding)
         {
 
             if (jumpCount < 2)
@@ -77,7 +84,12 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 0f);
                 //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
+                source.PlayOneShot(jumpSound);
+                jumpSmoke.Play();
+                Invoke(nameof(StopTrail), 0.2f);
+
                 jumpCount++;
+
             }
         }
 
@@ -157,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
     void StopWallJump()
     {
         wallJumping = false;
+        wallJumpSmokeTrail.Stop();
     }
 
     private void WallJump()
@@ -177,6 +190,8 @@ public class PlayerMovement : MonoBehaviour
         {
             wallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpForce.x, wallJumpForce.y);
+            source.PlayOneShot(wallJumpSound);
+            wallJumpSmokeTrail.Play();
             wallJumpingCounter = 0f;
 
             if (transform.localScale.x != wallJumpingDirection)
@@ -211,6 +226,7 @@ public class PlayerMovement : MonoBehaviour
         teleporting = true;
         jumpCount = 1;
         source.PlayOneShot(teleportSound);
+        teleportTrail.Play();
         Invoke(nameof(stopTeleport), 0.5f);
     }
 
@@ -227,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
     private void stopTeleport()
     {
         teleporting = false;
+        teleportTrail.Stop();
     }
 
     private void WallSlide()
@@ -241,6 +258,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isSliding = false;
         }
+    }
+
+    public void StopTrail()
+    {
+        jumpSmoke.Stop();
     }
 
 
