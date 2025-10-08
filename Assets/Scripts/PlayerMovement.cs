@@ -118,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
                     // Once nearly stopped, exit teleport state
                     if (Mathf.Abs(currentVelX) < 0.2f)
                     {
-                        Debug.Log(currentVelX);
                         teleporting = false;
                     }
                 }

@@ -34,7 +34,7 @@ public class DaggerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("wall") || collision.gameObject.CompareTag("floor"))
+        if (collision.gameObject.CompareTag("wall") || collision.gameObject.CompareTag("floor") || collision.gameObject.CompareTag("spike"))
         {
             Destroy(gameObject);
         }
