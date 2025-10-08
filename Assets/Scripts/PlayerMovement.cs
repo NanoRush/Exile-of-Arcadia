@@ -126,6 +126,11 @@ public class PlayerMovement : MonoBehaviour
                     // Same direction or no input → preserve teleport momentum
                     accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
 
+                    if (horizontal == 0 && !isGrounded())
+                    {
+                        targetSpeed = currentVelX;
+                    }
+
                     if (Mathf.Abs(currentVelX) > moveSpeed &&
                         Mathf.Sign(currentVelX) == Mathf.Sign(horizontal) &&
                         !isGrounded())
