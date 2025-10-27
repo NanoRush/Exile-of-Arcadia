@@ -17,13 +17,16 @@ public class Cursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        if (!PauseMenu.isPaused)
+        {
+            mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 rotation = mousePos - transform.position;
+            Vector3 rotation = mousePos - transform.position;
 
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+            transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        }
     }
 
     public void Flip()

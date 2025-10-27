@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             teleporting = false;
         }
 
-        if (Input.GetButtonDown("Jump") && !wallJumping && !isSliding)
+        if (Input.GetButtonDown("Jump") && !wallJumping && !isSliding && !PauseMenu.isPaused)
         {
 
             if (jumpCount < 2)
