@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DaggerScript : MonoBehaviour
 {
@@ -11,9 +12,12 @@ public class DaggerScript : MonoBehaviour
     private GameObject player;
     public float daggerSpeed;
 
+    private float maxCooldown;
+
     // Start is called before the first frame update
     void Start()
     {
+        maxCooldown = PlayerAttack.maxDaggerCooldown;
         player = GameObject.Find("Stark");
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
@@ -23,7 +27,9 @@ public class DaggerScript : MonoBehaviour
         rb.velocity = new Vector2(direction.x, direction.y).normalized * daggerSpeed;
         float rot = Mathf.Atan2(rotation.y,rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, maxCooldown);
+
+
     }
 
     // Update is called once per frame
@@ -48,10 +54,10 @@ public class DaggerScript : MonoBehaviour
 
     }
 
-    
-
     private void OnDestroy()
     {
         player.GetComponent<PlayerAttack>().daggerReset();
+        player.GetComponent<PlayerAttack>().fillCooldown();
+        //player.GetComponent<PlayerAttack>().PlayCooldownSound();
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class PlayerAttack : MonoBehaviour
     private int daggerCount = 0;
     private AudioSource source;
     public AudioClip daggerSwipeSound;
+
+    public Image cooldownBar;
+    private float daggerCooldown = 3f;
+    static public float maxDaggerCooldown = 3f;
+    public Color cooldownColor;
+    public AudioClip cooldownSound;
+    private bool cooldownFilled = true;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +30,27 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && daggerCount == 0 && !PauseMenu.isPaused)
         {
+            cooldownBar.color = Color.red;
             ThrowDagger();
+            daggerCooldown = 0f;
         }
+
+        if (daggerCooldown < maxDaggerCooldown)
+        {
+            daggerCooldown += Time.deltaTime;
+            if (daggerCooldown > maxDaggerCooldown)
+            {
+                daggerCooldown = maxDaggerCooldown;
+            }
+        }
+
+        CooldownBarFiller();
+
+        if (cooldownFilled)
+        {
+            cooldownBar.color = cooldownColor;
+        }
+
     }
 
     public void ThrowDagger()
@@ -35,5 +63,29 @@ public class PlayerAttack : MonoBehaviour
     public void daggerReset()
     {
         daggerCount = 0;
+    }
+
+    public void CooldownBarFiller()
+    {
+        cooldownBar.fillAmount = daggerCooldown / maxDaggerCooldown;
+        if (cooldownBar.fillAmount == 1)
+        {
+            cooldownFilled = true;
+        }
+        else
+        {
+            cooldownFilled = false;
+        }
+    }
+
+    public void PlayCooldownSound()
+    {
+        source.PlayOneShot(cooldownSound);
+    }
+
+    public void fillCooldown()
+    {
+        daggerCooldown = maxDaggerCooldown;
+        CooldownBarFiller();
     }
 }
