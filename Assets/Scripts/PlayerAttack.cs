@@ -13,8 +13,8 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip daggerSwipeSound;
 
     public Image cooldownBar;
-    private float daggerCooldown = 3f;
-    static public float maxDaggerCooldown = 3f;
+    private float daggerCooldown = 2.5f;
+    static public float maxDaggerCooldown = 2.5f;
     public Color cooldownColor;
     public AudioClip cooldownSound;
     private bool cooldownFilled = true;
