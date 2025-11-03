@@ -10,16 +10,7 @@ public class BrightnessController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("Brightness"))
-        {
-            PlayerPrefs.SetFloat("Brightness", 1f);
-            Load();
-        }
-
-        else
-        {
-            Load();
-        }
+        Load();
     }
 
     public void ChangeBrightness()
