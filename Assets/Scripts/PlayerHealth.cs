@@ -74,6 +74,16 @@ public class PlayerHealth : MonoBehaviour
         col.enabled = true;
         gameObject.transform.GetChild(2).gameObject.SetActive(true);
         canvas.transform.GetChild(0).gameObject.SetActive(false);
+
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("enemy");
+        if (enemyObjects.Length > 0)
+        {
+            foreach (GameObject enemyObject in enemyObjects)
+            {
+                enemyObject.GetComponent<EnemyHealth>().Respawn();
+            }
+        }
+
     }
 
 }

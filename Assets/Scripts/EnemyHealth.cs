@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
         health = health - damage;
     }
 
-    void Respawn()
+    public void Respawn()
     {
         GameObject enemyClone = (GameObject)Instantiate(enemyRef);
         enemyClone.transform.position = transform.position;
