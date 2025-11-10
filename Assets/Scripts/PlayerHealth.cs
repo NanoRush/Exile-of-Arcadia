@@ -16,8 +16,12 @@ public class PlayerHealth : MonoBehaviour
     Vector2 checkpointPos;
     bool Respawning = false;
 
+    private AudioSource audioSource;
+    public AudioClip deathSound;
     TextMeshProUGUI DeathCounter;
     int DeathCount = 0;
+
+    public GameObject deathWave;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         col = GetComponent<Collider2D>();
         checkpointPos = transform.position;
         DeathCounter = canvas.GetComponentInChildren<TextMeshProUGUI>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
                 col.enabled = false;
                 gameObject.transform.GetChild(2).gameObject.SetActive(false);
                 canvas.transform.GetChild(0).gameObject.SetActive(true);
+                Instantiate(deathWave, transform.position, Quaternion.identity);
+                audioSource.PlayOneShot(deathSound);
                 DeathCount++;
                 DeathCounter.text = "Deaths: " + DeathCount;
                 Invoke(nameof(Respawn), 0.8f);

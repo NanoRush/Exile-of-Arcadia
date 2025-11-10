@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4930932755616134571
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 443708147001315240, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e5d120c6fc36bab43a1a0e0e3c8ef9cc, type: 3}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.79124314
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8526412
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1856
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 512.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 85.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13832512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470763261751789415, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: m_Name
+      value: FinishPoint Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4470763261751789415, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4285676626306214733}
+  m_SourcePrefab: {fileID: 100100000, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+--- !u!1 &8819567907219665612 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4470763261751789415, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+  m_PrefabInstance: {fileID: 4930932755616134571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4285676626306214733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819567907219665612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94a68d29c654c64f9bf342543aa6443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  FinishMenu: {fileID: 0}

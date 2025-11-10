@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public string enemyType;
     private UnityEngine.Object enemyRef;
     private Rigidbody2D rb;
     private SpriteRenderer sp;
@@ -12,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyRef = Resources.Load("Drone");
+        enemyRef = Resources.Load(enemyType);
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
         health = 1;

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a88b3738ffbc34596ae2beb70010f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: Drone
   health: 0
   explosion: {fileID: 100006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 3}
 --- !u!70 &3984322608168864691
