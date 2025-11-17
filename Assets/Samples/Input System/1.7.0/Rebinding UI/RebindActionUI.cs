@@ -14,6 +14,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
     /// </summary>
     public class RebindActionUI : MonoBehaviour
     {
+
+        private void Start()
+        {
+            LoadActionBinding();
+        }
         /// <summary>
         /// Reference to the action that is to be rebound.
         /// </summary>
@@ -230,12 +235,31 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             UpdateBindingDisplay();
         }
 
+
+        private void SaveActionBinding()
+        {
+            var currentBindings = actionReference.action.actionMap.SaveBindingOverridesAsJson();
+            PlayerPrefs.SetString(m_Action.action.name + bindingId, currentBindings);
+        }
+
+        private void LoadActionBinding()
+        {
+            var savedBindings = PlayerPrefs.GetString(m_Action.action.name + bindingId);
+            if (!string.IsNullOrEmpty(savedBindings))
+            {
+                actionReference.action.actionMap.LoadBindingOverridesFromJson(savedBindings);
+            }
+        }
+
         /// <summary>
         /// Initiate an interactive rebind that lets the player actuate a control to choose a new binding
         /// for the action.
         /// </summary>
+        /// 
         public void StartInteractiveRebind()
         {
+            m_Action.action.Disable();
+
             if (!ResolveActionAndBinding(out var action, out var bindingIndex))
                 return;
 
@@ -260,6 +284,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             {
                 m_RebindOperation?.Dispose();
                 m_RebindOperation = null;
+                m_Action.action.Enable();
+                SaveActionBinding();
             }
 
             // Configure the rebind.

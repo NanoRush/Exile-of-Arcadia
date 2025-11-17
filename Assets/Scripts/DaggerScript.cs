@@ -14,6 +14,15 @@ public class DaggerScript : MonoBehaviour
 
     private float maxCooldown;
 
+    private Vector3 direction;
+    private Quaternion rotation;
+
+    public void Setup(Vector3 dir, Quaternion rot)
+    {
+        direction = dir;
+        rotation = rot;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +30,13 @@ public class DaggerScript : MonoBehaviour
         player = GameObject.Find("Stark");
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = mousePos - transform.position;
-        Vector3 rotation = transform.position - mousePos;
+        //mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        //Vector3 direction = mousePos - transform.position;
+        //Vector3 rotation = transform.position - mousePos;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * daggerSpeed;
-        float rot = Mathf.Atan2(rotation.y,rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        //float rot = Mathf.Atan2(rotation.y,rotation.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        transform.rotation = rotation * Quaternion.Euler(0, 0, -90f);
         Destroy(gameObject, maxCooldown);
 
 

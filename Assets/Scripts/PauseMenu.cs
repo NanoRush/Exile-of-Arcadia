@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject settingsMenu;
     public static bool isPaused;
     [SerializeField] Image brightnessOverlay;
+
+    public InputActionReference PauseInput;
     void Start()
     {
         pauseMenu.SetActive(false);
@@ -23,7 +26,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (PauseInput.action.triggered)
         {
             if (isPaused)
             {

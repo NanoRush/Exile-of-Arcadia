@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
@@ -18,6 +19,9 @@ public class PlayerAttack : MonoBehaviour
     public Color cooldownColor;
     public AudioClip cooldownSound;
     private bool cooldownFilled = true;
+
+    public InputActionReference ThrowAction;
+    public Cursor CursorScript;
  
     // Start is called before the first frame update
     void Start()
@@ -28,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && daggerCount == 0 && !PauseMenu.isPaused)
+        if (ThrowAction.action.triggered && daggerCount == 0 && !PauseMenu.isPaused)
         {
             cooldownBar.color = Color.red;
             ThrowDagger();
@@ -55,7 +59,8 @@ public class PlayerAttack : MonoBehaviour
 
     public void ThrowDagger()
     {
-        Instantiate(Dagger, daggerTransform.position, Quaternion.identity);
+        Transform dagger = Instantiate(Dagger, daggerTransform.position, Quaternion.identity);
+        dagger.GetComponent<DaggerScript>().Setup(CursorScript.AimDirection,CursorScript.transform.rotation);
         daggerCount++;
         source.PlayOneShot(daggerSwipeSound);
     }

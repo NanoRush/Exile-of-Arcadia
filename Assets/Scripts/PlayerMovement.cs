@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -49,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float gravityScale;
 
+    public InputActionReference Move;
+    public InputActionReference Jump;
+
     Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -63,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
+        horizontal = Move.action.ReadValue<float>();
         if (!wallJumping)
         {
             FlipSprite();
@@ -76,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             teleporting = false;
         }
 
-        if (Input.GetButtonDown("Jump") && !wallJumping && !isSliding && !PauseMenu.isPaused)
+        if (Jump.action.triggered && !wallJumping && !isSliding && !PauseMenu.isPaused)
         {
 
             if (jumpCount < 2)
@@ -170,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     void StopWallJump()
     {
         wallJumping = false;
@@ -190,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         {
             wallJumpingCounter -= Time.deltaTime;
         }
-        if(Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
+        if(Jump.action.triggered && wallJumpingCounter > 0f)
         {
             wallJumping = true;
             rb.linearVelocity = new Vector2(wallJumpingDirection * wallJumpForce.x, wallJumpForce.y);

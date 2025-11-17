@@ -9,6 +9,8 @@ public class AimScript : MonoBehaviour
     public float maxDistance = 100f;
     private Transform player;
     private Transform AimPoint;
+
+    [SerializeField] private Cursor cursorScript;
     void Start()
     {
         lr = GetComponent<LineRenderer>();
@@ -20,24 +22,15 @@ public class AimScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0;
+        Vector2 direction = cursorScript.AimDirection;
 
-        Vector3 start = AimPoint.transform.position;
+        Vector3 start = AimPoint.position;
         start.z = 0;
-
-        Vector2 direction = (mouseWorldPos - start).normalized;
-
-        if (Vector2.Dot(direction, AimPoint.up) < 0f)
-        {
-            direction = AimPoint.up;  // clamp direction forward
-        }
 
         lr.SetPosition(0, start);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(start, direction, maxDistance);
 
-        // default = full length
         Vector3 endPoint = start + (Vector3)(direction * maxDistance);
 
         foreach (RaycastHit2D h in hits)
@@ -45,7 +38,6 @@ public class AimScript : MonoBehaviour
             if (h.collider.CompareTag("Player")) continue;
             if (h.collider.CompareTag("dagger")) continue;
 
-            // first valid hit
             endPoint = h.point;
             break;
         }

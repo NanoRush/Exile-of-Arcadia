@@ -28,7 +28,7 @@
                     "name": "Throw",
                     "type": "Button",
                     "id": "f8c67740-e2c8-4a4f-8fbf-4da644eccbc1",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -145,17 +145,6 @@
                     "name": "",
                     "id": "33a9dc1b-5463-41b9-ba80-3621a26ddd4e",
                     "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Throw",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8b2e0d91-3b8e-4693-8947-517a0c6c50c2",
-                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
