@@ -77,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         health = 1;
         SpriteRenderer.enabled = true;
         rb.simulated = true;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         col.enabled = true;
         gameObject.transform.GetChild(2).gameObject.SetActive(true);
         canvas.transform.GetChild(0).gameObject.SetActive(false);

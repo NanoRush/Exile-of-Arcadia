@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, 15f);
+        rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, 15f);
         gravityScale = rb.gravityScale;
         source = GetComponent<AudioSource>();
 
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (jumpCount < 2)
             {
-                rb.velocity = new Vector2(rb.velocity.x, 0f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                 rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
                 source.PlayOneShot(jumpSound);
@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(!wallJumping){
 
-            float currentVelX = rb.velocity.x;
+            float currentVelX = rb.linearVelocity.x;
             float targetSpeed = horizontal * moveSpeed;
             float accelRate;
 
@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (rb.velocity.y < 0)
+        if (rb.linearVelocity.y < 0)
         {
             rb.gravityScale = gravityScale * fallGravityMultiplier;
         }
@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
         {
             wallJumping = true;
-            rb.velocity = new Vector2(wallJumpingDirection * wallJumpForce.x, wallJumpForce.y);
+            rb.linearVelocity = new Vector2(wallJumpingDirection * wallJumpForce.x, wallJumpForce.y);
             source.PlayOneShot(wallJumpSound);
             wallJumpSmokeTrail.Play();
             wallJumpingCounter = 0f;
@@ -226,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
     public void Teleport(Vector3 daggerLocation, Vector3 daggerVelocity)
     {
         transform.position = daggerLocation;
-        rb.velocity = daggerVelocity.normalized * teleportBoost;
+        rb.linearVelocity = daggerVelocity.normalized * teleportBoost;
         teleporting = true;
         jumpCount = 1;
         source.PlayOneShot(teleportSound);
@@ -255,7 +255,7 @@ public class PlayerMovement : MonoBehaviour
         if (isWallTouch() && !isGrounded() && horizontal != 0f)
         {
             isSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -wallSlidingSpeed, float.MaxValue));
             teleporting = false;
         }
         else

@@ -14,7 +14,7 @@ public class BulletScript : MonoBehaviour
         player = GameObject.Find("Stark");
         rb = GetComponent<Rigidbody2D>();
         Vector3 direction = (player.transform.position - transform.position).normalized;
-        rb.velocity = direction * bulletSpeed;
+        rb.linearVelocity = direction * bulletSpeed;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle - 90);

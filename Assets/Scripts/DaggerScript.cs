@@ -24,7 +24,7 @@ public class DaggerScript : MonoBehaviour
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
-        rb.velocity = new Vector2(direction.x, direction.y).normalized * daggerSpeed;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * daggerSpeed;
         float rot = Mathf.Atan2(rotation.y,rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
         Destroy(gameObject, maxCooldown);
@@ -49,7 +49,7 @@ public class DaggerScript : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
             Destroy(gameObject);
-            player.GetComponent<PlayerMovement>().Teleport(transform.position, rb.velocity);
+            player.GetComponent<PlayerMovement>().Teleport(transform.position, rb.linearVelocity);
         }
 
     }

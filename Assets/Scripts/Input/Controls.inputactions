@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Controls",
     "maps": [
         {
@@ -18,7 +19,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "7094c6fc-9875-43d0-b2c9-f564da7f2fe5",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -53,39 +54,6 @@
             ],
             "bindings": [
                 {
-                    "name": "Keyboard",
-                    "id": "9cd1f82e-4896-4aca-b912-eba2deb1e021",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "ec102a63-b1e1-475f-90e4-fa1128d373dd",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "8aa2ae29-48c1-4e12-9788-09651ae4b944",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "Controller",
                     "id": "cdd9371f-aa43-4297-a590-83237e8f148a",
                     "path": "1DAxis",
@@ -111,6 +79,39 @@
                     "name": "positive",
                     "id": "26c2eb84-8bbd-4e57-91e7-e83c49ce530a",
                     "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "6393e979-5823-4fa1-a7ff-cb9efb07e422",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "82b06df1-45ba-4bdb-8de1-cea9fe7ab6dd",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "0542c996-f053-4da6-b473-43b939c9ce64",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
