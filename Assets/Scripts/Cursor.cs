@@ -11,7 +11,7 @@ public class Cursor : MonoBehaviour
 
     private enum AimMode { Mouse, Gamepad }
     private AimMode currentAimMode = AimMode.Mouse;
-    public Vector2 AimDirection {  get; private set; }
+    public Vector2 AimDirection {  get; set; }
 
     private Vector2 lastMousePos;
 
@@ -93,6 +93,16 @@ public class Cursor : MonoBehaviour
             AimDirection = (world - transform.position).normalized;
         }
     }
+
+    void OnEnable()
+{
+    currAngle = 0f;
+    AimDirection = Vector2.right;
+    currentAimMode = AimMode.Mouse;
+
+    if (Mouse.current != null)
+        lastMousePos = Mouse.current.position.ReadValue();
+}
 
     public void Flip()
     {
