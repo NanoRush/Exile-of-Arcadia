@@ -18,9 +18,15 @@ public class SetPreferences : MonoBehaviour
             PlayerPrefs.SetFloat("Brightness", 1f);
         }
 
+        if (!PlayerPrefs.HasKey("AimLine"))
+        {
+            PlayerPrefs.SetInt("AimLine", 1);
+        }
+
         AudioListener.volume = PlayerPrefs.GetFloat("Volume");
         Color c = brightnessOverlay.color;
         c.a = Mathf.Lerp(0.7f, 0f, PlayerPrefs.GetFloat("Brightness"));
         brightnessOverlay.color = c;
+        ToggleScript.AimLineOn = PlayerPrefs.GetInt("AimLine") == 1;
     }
 }

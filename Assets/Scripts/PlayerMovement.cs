@@ -73,12 +73,19 @@ public class PlayerMovement : MonoBehaviour
             FlipSprite();
         }
 
-
-        if (isGrounded())
-        {
+        if (jumpCount == 0 && !isGrounded() && !wallJumping){
             jumpCount = 1;
+        }
+
+        WallSlide();
+        WallJump();
+
+        if (isGrounded() && !wallJumping && !isSliding && Mathf.Abs(rb.linearVelocityY) < 0.005f)
+        {
+            jumpCount = 0;
             teleporting = false;
         }
+
 
         if (Jump.action.triggered && !wallJumping && !isSliding && !PauseMenu.isPaused)
         {
@@ -96,9 +103,6 @@ public class PlayerMovement : MonoBehaviour
 
             }
         }
-
-        WallSlide();
-        WallJump();
 
     }
 

@@ -18,16 +18,31 @@ public class Cursor : MonoBehaviour
     private const float stickThreshold = 0.15f;     // Minimum stick input
     private const float mouseThreshold = 2f;        // Minimum pixel movement
 
+    private AimScript AimScript;
+
     void Start()
     {
         mainCam = Camera.main;
 
         if (Mouse.current != null)
             lastMousePos = Mouse.current.position.ReadValue();
+
+        AimScript = GetComponentInChildren<AimScript>();
     }
 
     void Update()
     {
+
+        if(ToggleScript.AimLineOn == false)
+        {
+            AimScript.gameObject.SetActive(false);
+        }
+        else
+        {
+            AimScript.gameObject.SetActive(true);
+        }
+
+
         if (PauseMenu.isPaused)
             return;
 

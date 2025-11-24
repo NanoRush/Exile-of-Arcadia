@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour
         Color c = brightnessOverlay.color;
         c.a = Mathf.Lerp(0.7f, 0f, PlayerPrefs.GetFloat("Brightness"));
         brightnessOverlay.color = c;
+        ToggleScript.AimLineOn = PlayerPrefs.GetInt("AimLine") == 1;
     }
 
     // Update is called once per frame
