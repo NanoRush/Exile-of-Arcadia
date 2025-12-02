@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float teleportBoost;
 
     private int jumpCount = 0;
+    public int maxJump;
 
     private bool teleporting = false;
 
@@ -67,6 +69,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if ((ToggleTriple.TripleJumpOn))
+        {
+            maxJump = 3;
+        }
+        else
+        {
+            maxJump = 2;
+        }
         horizontal = Move.action.ReadValue<float>();
         if (!wallJumping)
         {
@@ -90,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         if (Jump.action.triggered && !wallJumping && !isSliding && !PauseMenu.isPaused)
         {
 
-            if (jumpCount < 2)
+            if (jumpCount < maxJump)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
                 //rb.velocity = new Vector2(rb.velocity.x, jumpPower);

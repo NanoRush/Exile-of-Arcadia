@@ -23,10 +23,16 @@ public class SetPreferences : MonoBehaviour
             PlayerPrefs.SetInt("AimLine", 1);
         }
 
+        if (!PlayerPrefs.HasKey("TripleJump"))
+        {
+            PlayerPrefs.SetInt("TripleJump", 0);
+        }
+
         AudioListener.volume = PlayerPrefs.GetFloat("Volume");
         Color c = brightnessOverlay.color;
         c.a = Mathf.Lerp(0.7f, 0f, PlayerPrefs.GetFloat("Brightness"));
         brightnessOverlay.color = c;
         ToggleScript.AimLineOn = PlayerPrefs.GetInt("AimLine") == 1;
+        ToggleTriple.TripleJumpOn = PlayerPrefs.GetInt("TripleJump") == 1;
     }
 }

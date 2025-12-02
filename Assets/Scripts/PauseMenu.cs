@@ -22,6 +22,7 @@ public class PauseMenu : MonoBehaviour
         c.a = Mathf.Lerp(0.7f, 0f, PlayerPrefs.GetFloat("Brightness"));
         brightnessOverlay.color = c;
         ToggleScript.AimLineOn = PlayerPrefs.GetInt("AimLine") == 1;
+        ToggleTriple.TripleJumpOn = PlayerPrefs.GetInt("TripleJump") == 1;
     }
 
     // Update is called once per frame
