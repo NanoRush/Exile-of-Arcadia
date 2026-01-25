@@ -701,6 +701,7 @@ GameObject:
   - component: {fileID: 87196966}
   - component: {fileID: 87196968}
   - component: {fileID: 87196969}
+  - component: {fileID: 87196970}
   m_Layer: 0
   m_Name: Stark
   m_TagString: Player
@@ -755,7 +756,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cf52b35eb9d62ae48b5e521d7d4bf3b5, type: 3}
+  m_Sprite: {fileID: 6530179738444782934, guid: 143e8ad35e31bca4199bd4672a2d8e14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -861,17 +862,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.20779094, y: -0.3070159}
+  m_Offset: {x: 0.23114425, y: -0.33704185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.8, y: 7.2}
+    oldSize: {x: 2.2285714, y: 3.9}
     newSize: {x: 12.8, y: 7.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.3476126, y: 3.1197906}
+  m_Size: {x: 1.3943192, y: 3.1798425}
   m_EdgeRadius: 0
 --- !u!50 &87196965
 Rigidbody2D:
@@ -1083,6 +1084,28 @@ MonoBehaviour:
   m_DefaultActionMap: InGame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &87196970
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87196960}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed668823e8becfc47b5c8da25a189f8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &95443598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50142,7 +50165,7 @@ Transform:
   m_GameObject: {fileID: 1500861949}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 162.10703, y: -3.253, z: -5.808427}
+  m_LocalPosition: {x: 162.10703, y: -3.329, z: -5.808427}
   m_LocalScale: {x: 0.12465909, y: 0.12465909, z: 0.12465909}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -60355,8 +60378,8 @@ Transform:
   m_GameObject: {fileID: 2056971140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 162.10703, y: -3.336, z: -5.808427}
-  m_LocalScale: {x: 0.13674608, y: 0.13674608, z: 0.13674608}
+  m_LocalPosition: {x: 162.10703, y: -3.672, z: -5.808427}
+  m_LocalScale: {x: 0.121759616, y: 0.121759616, z: 0.121759616}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1433806078}

@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool teleporting = false;
 
+    Animator anim;
+
     //Audio and Visual
     public AudioClip teleportSound;
     public AudioClip jumpSound;
@@ -63,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector3.ClampMagnitude(rb.linearVelocity, 15f);
         gravityScale = rb.gravityScale;
         source = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
 
     }
 
@@ -129,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (horizontal != 0 && Mathf.Sign(horizontal) != Mathf.Sign(currentVelX))
                 {
+
                     // Opposite input → brake to 0 first
                     targetSpeed = 0f;
                     accelRate = decceleration * 0.2f; // strong braking
@@ -165,6 +169,15 @@ public class PlayerMovement : MonoBehaviour
                     !isGrounded())
                 {
                     targetSpeed = currentVelX;
+                }
+
+                if (isGrounded() && horizontal != 0)
+                {
+                    anim.SetBool("isRunning", true);
+                }
+                else if (isGrounded() && horizontal == 0)
+                {
+                    anim.SetBool("isRunning", false);
                 }
 
                 accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
