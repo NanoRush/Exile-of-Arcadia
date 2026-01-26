@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (jumpCount == 0 && !isGrounded() && !wallJumping){
+            anim.SetBool("isFalling", true);
             jumpCount = 1;
         }
 
@@ -102,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Jump.action.triggered && !wallJumping && !isSliding && !PauseMenu.isPaused)
         {
+            anim.SetBool("isJumping", true);
 
             if (jumpCount < maxJump)
             {
@@ -122,7 +124,27 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if(!wallJumping){
+        if (!isGrounded())
+        {
+            if(rb.linearVelocityY <= 0f)
+            {
+                anim.SetBool("isFalling", true);
+                anim.SetBool("isJumping", false);
+            }
+            else
+            {
+                anim.SetBool("isJumping", true);
+                anim.SetBool("isFalling", false);
+            }
+            anim.SetBool("isRunning", false);
+        }
+        else
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", false);
+        }
+
+        if(!wallJumping){    
 
             float currentVelX = rb.linearVelocity.x;
             float targetSpeed = horizontal * moveSpeed;
