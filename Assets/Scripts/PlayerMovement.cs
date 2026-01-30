@@ -142,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("isJumping", false);
             anim.SetBool("isFalling", false);
+            anim.SetBool("isSliding", false);
         }
 
         if(!wallJumping){    
@@ -309,12 +310,14 @@ public class PlayerMovement : MonoBehaviour
         if (isWallTouch() && !isGrounded() && horizontal != 0f)
         {
             isSliding = true;
+            anim.SetBool("isSliding", true);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -wallSlidingSpeed, float.MaxValue));
             teleporting = false;
         }
         else
         {
             isSliding = false;
+            anim.SetBool("isSliding", false);
         }
     }
 
