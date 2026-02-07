@@ -8,7 +8,12 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        StartCoroutine(Load());
+        StartCoroutine(Load(1));
+    }
+
+    public void PlayLevel2()
+    {
+        StartCoroutine(Load(2));
     }
 
     public void QuitGame()
@@ -16,10 +21,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator Load()
+    IEnumerator Load(int level)
     {
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(level);
     }
 
 }
