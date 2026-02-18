@@ -37,6 +37,7 @@ public class AimScript : MonoBehaviour
         {
             if (h.collider.CompareTag("Player")) continue;
             if (h.collider.CompareTag("dagger")) continue;
+            if (h.collider.CompareTag("trigger")) continue;
 
             endPoint = h.point;
             break;

@@ -44,7 +44,7 @@ public class PortalScript : MonoBehaviour
             float angle = Mathf.Atan2(exitDirection.y, exitDirection.x) * Mathf.Rad2Deg;
             collision.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
         }
-        StartCoroutine(TeleportCooldown(0.5f));
+        StartCoroutine(TeleportCooldown(1f));
     }
 
     public IEnumerator TeleportCooldown(float seconds)
