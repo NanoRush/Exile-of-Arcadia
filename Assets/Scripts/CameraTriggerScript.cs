@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+using System;
 
 
 public class CameraTriggerScript : MonoBehaviour
