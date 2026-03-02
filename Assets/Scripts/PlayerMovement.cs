@@ -187,8 +187,12 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 // --- NORMAL MOVEMENT RULES ---
-                if (Mathf.Abs(currentVelX) > moveSpeed &&
-                    Mathf.Sign(currentVelX) == Mathf.Sign(horizontal) &&
+                float velSign = GetSignWithDeadzone(currentVelX);
+                float inputSign = GetSignWithDeadzone(horizontal);
+
+                if (Mathf.Abs(currentVelX) > moveSpeed && ((
+                    velSign != 0f &&
+                    velSign == inputSign) || inputSign == 0) &&
                     !isGrounded())
                 {
                     targetSpeed = currentVelX;
@@ -250,6 +254,7 @@ public class PlayerMovement : MonoBehaviour
             wallJumping = true;
             rb.linearVelocity = new Vector2(wallJumpingDirection * wallJumpForce.x, wallJumpForce.y);
             source.PlayOneShot(wallJumpSound);
+            jumpCount = 0;
             wallJumpSmokeTrail.Play();
             wallJumpingCounter = 0f;
 
@@ -324,6 +329,14 @@ public class PlayerMovement : MonoBehaviour
     public void StopTrail()
     {
         jumpSmoke.Stop();
+    }
+
+    float GetSignWithDeadzone(float value, float deadzone = 0.05f)
+    {
+        if (Mathf.Abs(value) < deadzone)
+            return 0f;
+
+        return Mathf.Sign(value);
     }
 
 
