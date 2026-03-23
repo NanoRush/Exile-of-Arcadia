@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,16 +14,17 @@ public class PlayerAttack : MonoBehaviour
     private AudioSource source;
     public AudioClip daggerSwipeSound;
 
-    public Image cooldownBar;
     private float daggerCooldown = 2.5f;
     static public float maxDaggerCooldown = 2.5f;
-    public Color cooldownColor;
     public AudioClip cooldownSound;
-    private bool cooldownFilled = true;
 
     public InputActionReference ThrowAction;
     public Cursor CursorScript;
- 
+
+    public event Action<float> OnCooldownChanged;
+    public event Action OnCooldownComplete;
+    public event Action OnCooldownStarted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +36,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (ThrowAction.action.triggered && daggerCount == 0 && !PauseMenu.isPaused)
         {
-            cooldownBar.color = Color.red;
             ThrowDagger();
             daggerCooldown = 0f;
+
+            OnCooldownStarted?.Invoke();
         }
 
         if (daggerCooldown < maxDaggerCooldown)
@@ -45,16 +48,11 @@ public class PlayerAttack : MonoBehaviour
             if (daggerCooldown > maxDaggerCooldown)
             {
                 daggerCooldown = maxDaggerCooldown;
+                OnCooldownComplete?.Invoke();
             }
+
+            OnCooldownChanged?.Invoke(daggerCooldown / maxDaggerCooldown);
         }
-
-        CooldownBarFiller();
-
-        if (cooldownFilled)
-        {
-            cooldownBar.color = cooldownColor;
-        }
-
     }
 
     public void ThrowDagger()
@@ -70,19 +68,6 @@ public class PlayerAttack : MonoBehaviour
         daggerCount = 0;
     }
 
-    public void CooldownBarFiller()
-    {
-        cooldownBar.fillAmount = daggerCooldown / maxDaggerCooldown;
-        if (cooldownBar.fillAmount == 1)
-        {
-            cooldownFilled = true;
-        }
-        else
-        {
-            cooldownFilled = false;
-        }
-    }
-
     public void PlayCooldownSound()
     {
         source.PlayOneShot(cooldownSound);
@@ -91,6 +76,8 @@ public class PlayerAttack : MonoBehaviour
     public void fillCooldown()
     {
         daggerCooldown = maxDaggerCooldown;
-        CooldownBarFiller();
+
+        OnCooldownChanged?.Invoke(1f);
+        OnCooldownComplete?.Invoke();
     }
 }

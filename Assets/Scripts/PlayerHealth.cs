@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -23,6 +24,10 @@ public class PlayerHealth : MonoBehaviour
 
     public GameObject deathWave;
 
+    public event Action OnPlayerDied;
+    public event Action OnPlayerRespawn;
+    public event Action<int> OnDeathCountChanged;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,33 +40,49 @@ public class PlayerHealth : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (health <= 0)
-        {
-            if (!Respawning)
-            {
-                Respawning = true;
-                SpriteRenderer.enabled = false;
-                rb.simulated = false;
-                col.enabled = false;
-                gameObject.transform.GetChild(2).gameObject.SetActive(false);
-                canvas.transform.GetChild(0).gameObject.SetActive(true);
-                Instantiate(deathWave, transform.position, Quaternion.identity);
-                audioSource.PlayOneShot(deathSound);
-                DeathCount++;
-                DeathCounter.text = "Deaths: " + DeathCount;
-                Invoke(nameof(Respawn), 0.8f);
-            }
-        }
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("spike"))
         {
-            health--;
+            TakeDamage(1);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (!Respawning)
+        {
+            health -= damage;
+
+            if(health <= 0)
+            {
+                HandleDeath();
+            }
+        }
+    }
+
+    private void HandleDeath()
+    {
+        if (!Respawning)
+        {
+            Respawning = true;
+
+            SpriteRenderer.enabled = false;
+            rb.simulated = false;
+            col.enabled = false;
+            gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            canvas.transform.GetChild(0).gameObject.SetActive(true);
+
+            Instantiate(deathWave, transform.position, Quaternion.identity);
+            audioSource.PlayOneShot(deathSound);
+
+            DeathCount++;
+
+            OnDeathCountChanged?.Invoke(DeathCount);
+            OnPlayerDied?.Invoke();
+            Invoke(nameof(Respawn), 0.8f);
+            Invoke(nameof(DeathTextAppear), 2.5f);
         }
     }
 
@@ -91,6 +112,11 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
+    }
+
+    public void DeathTextAppear()
+    {
+        OnPlayerRespawn?.Invoke();
     }
 
 }

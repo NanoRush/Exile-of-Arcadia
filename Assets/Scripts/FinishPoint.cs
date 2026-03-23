@@ -44,4 +44,11 @@ public class FinishPoint : MonoBehaviour
         Time.timeScale = 1f;
         PauseMenu.isPaused = false;
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(2);
+        Time.timeScale = 1f;
+        PauseMenu.isPaused = false;
+    }
 }
