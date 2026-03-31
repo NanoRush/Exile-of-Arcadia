@@ -120,6 +120,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Controller 2.0",
+                    "id": "6f318849-9401-44b8-8490-3ec4baeb3c03",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6b0f332b-dc06-4031-86b0-dfad5ca4b557",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2828a559-6fa3-4a82-83e3-f88d2a1144d0",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "3e092237-e2f2-464a-b00a-e1aeaebd6a6a",
                     "path": "<Keyboard>/space",

@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     public GameObject pauseMenu;
     public GameObject settingsMenu;
+    public Button playButton;
     public static bool isPaused;
     [SerializeField] Image brightnessOverlay;
 
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        playButton.Select();
     }
 
     public void ResumeGame()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FinishPoint : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class FinishPoint : MonoBehaviour
     public AudioClip clip;
 
     public GameObject FinishMenu;
+    public Button NextLevelButton;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class FinishPoint : MonoBehaviour
             FinishMenu.SetActive(true);
             Time.timeScale = 0f;
             PauseMenu.isPaused = true;
+            NextLevelButton.Select();
         }
     }
 

@@ -24,4 +24,15 @@ public class ButtonScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         rectTransform.localScale = originalSize;
     }
+
+    public void Grow()
+    {
+        rectTransform.localScale = originalSize * sizeDifference;
+    }
+
+    public void Shrink()
+    {
+        rectTransform.localScale = originalSize;
+    }
+
 }
