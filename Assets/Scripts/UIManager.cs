@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public PlayerHealth playerHealth;
     public TextMeshProUGUI deathText;
+    public GameObject deathBackground;
 
     private void Start()
     {
@@ -44,11 +45,13 @@ public class UIManager : MonoBehaviour
     void ShowDeathText()
     {
         deathText.alpha = 1;
+        deathBackground.SetActive(true);
     }
 
     void HideDeathText()
     {
         deathText.alpha = 0;
+        deathBackground.SetActive(false);
     }
 
     private void OnDestroy()
