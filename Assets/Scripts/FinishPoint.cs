@@ -30,7 +30,7 @@ public class FinishPoint : MonoBehaviour
             FinishMenu.SetActive(true);
             Time.timeScale = 0f;
             PauseMenu.isPaused = true;
-            NextLevelButton.Select();
+            StartCoroutine(SelectNextFrame());
         }
     }
 
@@ -53,5 +53,11 @@ public class FinishPoint : MonoBehaviour
         SceneManager.LoadScene(2);
         Time.timeScale = 1f;
         PauseMenu.isPaused = false;
+    }
+
+    IEnumerator SelectNextFrame()
+    {
+        yield return null; // wait 1 frame
+        NextLevelButton.Select();
     }
 }

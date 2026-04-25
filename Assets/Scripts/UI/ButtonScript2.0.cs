@@ -14,6 +14,12 @@ public class UIButtonTween : MonoBehaviour,
     private Vector3 originalScale;
     private Tween currentTween;
 
+    void Awake()
+    {
+        DOTween.defaultUpdateType = UpdateType.Normal;
+        DOTween.defaultTimeScaleIndependent = true;
+    }
+
     void Start()
     {
         originalScale = transform.localScale;
