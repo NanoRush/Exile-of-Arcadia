@@ -152,7 +152,12 @@ public class MainMenuUI : MonoBehaviour
                      .SetDelay(x * 0.05f);
             }
 
-            LevelSelectGroup.transform.GetChild(0).GetComponent<Button>().Select();
+            Button firstButton = LevelSelectGroup.transform.GetChild(0).GetComponent<Button>();
+
+            DOVirtual.DelayedCall(fadeDuration * 0.2f, () =>
+            {
+                firstButton.Select();
+            });
         }
         else
         {
