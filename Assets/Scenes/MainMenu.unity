@@ -1169,6 +1169,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &357099384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,6 +2248,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &765214544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,6 +2714,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &811505126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,6 +2830,7 @@ RectTransform:
   - {fileID: 1454705643}
   - {fileID: 740152847}
   - {fileID: 734489049}
+  - {fileID: 2111005639}
   m_Father: {fileID: 974477816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3325,6 +3329,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &909241057
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,6 +3646,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &974477812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,6 +3662,7 @@ GameObject:
   - component: {fileID: 974477817}
   - component: {fileID: 974477819}
   - component: {fileID: 974477818}
+  - component: {fileID: 974477820}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3744,7 +3751,6 @@ RectTransform:
   - {fileID: 1087558599}
   - {fileID: 703384067}
   - {fileID: 357099385}
-  - {fileID: 2111005639}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3802,6 +3808,18 @@ MonoBehaviour:
   level1Group: {fileID: 1161033054}
   level2Group: {fileID: 178392378}
   levelDetailsPanel: {fileID: 2111005639}
+--- !u!114 &974477820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974477812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fcc7f6fd1b9914f8a2373a75c032b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControllerVibration
 --- !u!224 &994283440 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7033771109991341073, guid: 32bbb909b57bda947b4c61677ec3fbdd, type: 3}
@@ -3818,6 +3836,7 @@ GameObject:
   - component: {fileID: 1079548030}
   - component: {fileID: 1079548029}
   - component: {fileID: 1079548031}
+  - component: {fileID: 1079548032}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3886,6 +3905,18 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!114 &1079548032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079548027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fcc7f6fd1b9914f8a2373a75c032b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControllerVibration
 --- !u!114 &1083026377 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6395329676542843230, guid: 49e6c8cfa0a4e6440b3048a41f08c0cd, type: 3}
@@ -3923,6 +3954,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &1087558598
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,7 +4360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Esc
+  m_Text: rightTriggerButton
 --- !u!222 &1335900494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4714,6 +4746,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &1466061892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5141,6 +5174,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &1586587838
 GameObject:
   m_ObjectHideFlags: 0
@@ -5297,6 +5331,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &1621510862
 GameObject:
   m_ObjectHideFlags: 0
@@ -6336,6 +6371,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 1079548032}
 --- !u!1 &1924530725
 GameObject:
   m_ObjectHideFlags: 0
@@ -6737,14 +6773,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2111005638}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.8111815, y: 4.9631133, z: 4.0515213}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1161033053}
   - {fileID: 178392377}
-  m_Father: {fileID: 974477816}
+  m_Father: {fileID: 817569474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

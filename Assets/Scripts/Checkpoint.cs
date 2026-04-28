@@ -6,6 +6,7 @@ public class Checkpoint : MonoBehaviour
 {
     PlayerHealth PlayerHealth;
     public Transform RespawnPoint;
+    public ControllerVibration vibrationScript;
 
     SpriteRenderer spriteRenderer;
     public Sprite passive, active;
@@ -30,6 +31,7 @@ public class Checkpoint : MonoBehaviour
             spriteRenderer.sprite = active;
             coll.enabled = false;
             source.PlayOneShot(clip);
+            vibrationScript.Vibrate(0.1f, 0.1f, 0.1f);
         }
     }
 

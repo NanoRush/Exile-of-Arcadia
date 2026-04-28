@@ -38,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem wallJumpSmokeTrail;
     public ParticleSystem teleportTrail;
 
+    //Haptics
+    public ControllerVibration vibrationScript;
+
     //Wall Jump
     public Transform wallCheck;
     public LayerMask wallLayer;
@@ -290,6 +293,7 @@ public class PlayerMovement : MonoBehaviour
         teleporting = true;
         jumpCount = 1;
         source.PlayOneShot(teleportSound);
+        vibrationScript.Vibrate(0.2f, 0.1f, 0.2f);
         teleportTrail.Play();
         Invoke(nameof(stopTeleport), 0.5f);
     }

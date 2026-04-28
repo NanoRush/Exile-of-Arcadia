@@ -1758,6 +1758,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!1001 &3307908412170053617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2047,6 +2048,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!1001 &5304604871949346358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2352,6 +2354,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!114 &4420452832077312644 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8414171510189495474, guid: 32bbb909b57bda947b4c61677ec3fbdd, type: 3}
@@ -2608,6 +2611,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!1001 &6961106724445226433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2853,6 +2857,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!1001 &7655869158919944165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3299,6 +3304,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!114 &2509103366510811687 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5254922619372154306, guid: 49e6c8cfa0a4e6440b3048a41f08c0cd, type: 3}
@@ -3700,6 +3706,7 @@ MonoBehaviour:
   hoverScale: 1.1
   pressedScale: 0.9
   duration: 0.2
+  vibrationScript: {fileID: 0}
 --- !u!224 &1251448833172415361 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7033771109991341073, guid: 32bbb909b57bda947b4c61677ec3fbdd, type: 3}

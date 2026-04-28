@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class UIButtonTween : MonoBehaviour,
     IPointerEnterHandler, IPointerExitHandler,
@@ -10,6 +11,8 @@ public class UIButtonTween : MonoBehaviour,
     public float hoverScale = 1.1f;
     public float pressedScale = 0.9f;
     public float duration = 0.2f;
+
+    public ControllerVibration vibrationScript;
 
     private Vector3 originalScale;
     private Tween currentTween;
@@ -93,5 +96,6 @@ public class UIButtonTween : MonoBehaviour,
         seq.Append(transform.DOScale(originalScale * hoverScale, duration * 0.5f));
 
         currentTween = seq;
+        vibrationScript.Vibrate(0f, 0.1f, 0.1f);
     }
 }

@@ -1504,6 +1504,7 @@ MonoBehaviour:
   jumpSmoke: {fileID: 184088571}
   wallJumpSmokeTrail: {fileID: 1761521182}
   teleportTrail: {fileID: 1342540460}
+  vibrationScript: {fileID: 1518709747}
   wallCheck: {fileID: 1354411418}
   wallLayer:
     serializedVersion: 2
@@ -3787,6 +3788,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 345.73126
@@ -4261,6 +4266,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 169.00127
@@ -17667,6 +17676,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.84
@@ -44438,6 +44451,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 454.35907
@@ -44495,6 +44512,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 380.9986
@@ -89876,6 +89897,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 537.837
@@ -94675,6 +94700,7 @@ GameObject:
   - component: {fileID: 1518709745}
   - component: {fileID: 1518709744}
   - component: {fileID: 1518709746}
+  - component: {fileID: 1518709747}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -94743,6 +94769,18 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!114 &1518709747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518709742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fcc7f6fd1b9914f8a2373a75c032b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControllerVibration
 --- !u!1001 &1528033226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94911,6 +94949,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 303.93
@@ -100323,6 +100365,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 222.35187
@@ -101840,6 +101886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 607.2
@@ -109622,6 +109672,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 215973365}
     m_Modifications:
+    - target: {fileID: 817467521996893229, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 3747491125703499178, guid: 94c85a9636a1a354c8be5099d9c68b4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -107.608734
@@ -109865,6 +109919,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 87196968}
+    - target: {fileID: 1753999356150157356, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 1962882906149920996, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: playerAttack
       value: 
@@ -109929,6 +109987,14 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 87196968}
+    - target: {fileID: 4959315971931674135, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
+    - target: {fileID: 5188003496768088625, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 5258268690275560265, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -109953,6 +110019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6042447422862880929, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 6371154935840245103, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -109993,6 +110063,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 87196968}
+    - target: {fileID: 6822550885869104561, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 6980966748989617648, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -110085,6 +110159,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7703221669880466803, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: fadeDuration
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 7709728866650388561, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -110093,11 +110171,26 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 87196968}
+    - target: {fileID: 8018214035195710933, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
     - target: {fileID: 8319528708207870269, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8882317256911429934, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: vibrationScript
+      value: 
+      objectReference: {fileID: 1518709747}
+    m_RemovedComponents:
+    - {fileID: 7708878181048357222, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+    - {fileID: 7259710587868848932, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+    - {fileID: 6754196578636011804, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+    - {fileID: 7086502679902890689, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+    - {fileID: 6694257934343819491, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+    - {fileID: 497897079756758050, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+    - {fileID: 5414261231409333645, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
