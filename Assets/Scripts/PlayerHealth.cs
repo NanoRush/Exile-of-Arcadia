@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public event Action OnPlayerDied;
     public event Action OnPlayerRespawn;
     public event Action<int> OnDeathCountChanged;
+    public NotificationScript NotificationScript;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,11 @@ public class PlayerHealth : MonoBehaviour
         if (!Respawning)
         {
             Respawning = true;
+
+            if (NotificationScript != null)
+            {
+                NotificationScript.RegisterDeath();
+            }
 
             SpriteRenderer.enabled = false;
             rb.simulated = false;

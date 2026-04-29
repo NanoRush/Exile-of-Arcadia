@@ -13,10 +13,18 @@ public class NotificationScript : MonoBehaviour
     public float duration = 0.5f;
     public float displayTime = 3f;
 
+    [Header("Help Mode")]
+    public bool Help;
+    public int deathsRequired = 5;
+
     private Vector2 originalPos;
     private bool isShowing = false;
     private Sequence currentSequence;
     private AudioSource audioSource;
+
+    private bool playerInTrigger = false;
+    private int deathCount = 0;
+    private bool helpShown = false;
 
     void Start()
     {
@@ -35,7 +43,35 @@ public class NotificationScript : MonoBehaviour
         if (!other.CompareTag("Player") || isShowing)
             return;
 
-        ShowNotification();
+        playerInTrigger = true;
+
+        if(!Help && !isShowing)
+        {
+            ShowNotification();
+        }
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        playerInTrigger = false;
+    }
+
+    public void RegisterDeath()
+    {
+        if (!Help || helpShown || !playerInTrigger)
+            return;
+
+        deathCount++;
+        
+        if (deathCount >= deathsRequired)
+        {
+            ShowNotification();
+            helpShown = true;
+        }
     }
 
     void ShowNotification()
@@ -75,4 +111,6 @@ public class NotificationScript : MonoBehaviour
             isShowing = false;
         });
     }
+
+
 }
