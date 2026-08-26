@@ -62,6 +62,13 @@ public class DaggerScript : MonoBehaviour
             player.GetComponent<PlayerMovement>().Teleport(transform.position, rb.linearVelocity);
         }
 
+        if (collision.gameObject.CompareTag("anchor"))
+        {
+            Vector2 anchorDir = collision.gameObject.GetComponent<AnchorScript>().AnchorActivate();
+            Destroy(gameObject);
+            player.GetComponent<PlayerMovement>().Teleport(collision.transform.position, anchorDir * 2f);
+        }
+
     }
 
     private void OnDestroy()

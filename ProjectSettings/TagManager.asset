@@ -10,6 +10,7 @@ TagManager:
   - spike
   - dagger
   - trigger
+  - anchor
   layers:
   - Default
   - TransparentFX
