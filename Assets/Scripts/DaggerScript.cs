@@ -66,7 +66,6 @@ public class DaggerScript : MonoBehaviour
         {
             Vector2 anchorDir = collision.gameObject.GetComponent<AnchorScript>().AnchorActivate();
             Destroy(gameObject);
-            player.GetComponent<PlayerMovement>().Teleport(collision.transform.position, anchorDir * 2f);
         }
 
     }

@@ -18,19 +18,37 @@ public class AnchorScript : MonoBehaviour
     private Camera mainCamera;
     private Vector2 aimDirection;
 
+    // Input method
+    private enum AimMode { Mouse, Gamepad }
+    private AimMode currentAimMode = AimMode.Mouse;
+
+    private Vector2 lastMousePos;
+
+    private const float stickThreshold = 0.15f;
+    private const float mouseThreshold = 2f;
+
+    // Keeps the last valid controller direction
+    private Vector2 lastStickDirection = Vector2.right;
+
     void Start()
     {
-        VirtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        VirtualCamera = GameObject.Find("Virtual Camera")
+            .GetComponent<CinemachineVirtualCamera>();
 
         player = GameObject.Find("Stark");
         AnchorAimLine = transform.GetChild(0).gameObject;
 
         transposer = VirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         mainCamera = Camera.main;
+
+        if (Mouse.current != null)
+            lastMousePos = Mouse.current.position.ReadValue();
     }
 
     private void Update()
     {
+        DetectInputMethod();
+
         if (anchorState)
         {
             RotateAimLine();
@@ -39,27 +57,93 @@ public class AnchorScript : MonoBehaviour
         if (ThrowAction.action.triggered && anchorState)
         {
             aimDirection = GetAimDirection();
+
             anchorState = false;
-            player.GetComponent<PlayerMovement>().Teleport(transform.position, aimDirection * 2f);
+
+            player.GetComponent<PlayerMovement>().Teleport(
+                transform.position,
+                aimDirection * 2f
+            );
+        }
+    }
+
+    private void DetectInputMethod()
+    {
+        // ---------------------------
+        // CONTROLLER DETECTION
+        // ---------------------------
+        Vector2 stick = Vector2.zero;
+
+        if (Gamepad.current != null)
+            stick = Gamepad.current.rightStick.ReadValue();
+
+        if (stick.sqrMagnitude > stickThreshold * stickThreshold)
+        {
+            currentAimMode = AimMode.Gamepad;
+
+            // Save last valid stick direction
+            lastStickDirection = stick.normalized;
+        }
+
+        // ---------------------------
+        // MOUSE DETECTION
+        // ---------------------------
+        if (Mouse.current != null)
+        {
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+
+            float mouseMove =
+                (mousePos - lastMousePos).sqrMagnitude;
+
+            if (mouseMove > mouseThreshold * mouseThreshold)
+            {
+                currentAimMode = AimMode.Mouse;
+            }
+
+            lastMousePos = mousePos;
         }
     }
 
     private void RotateAimLine()
     {
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
+        Vector2 direction;
 
-        Vector3 worldMousePosition =
-            Camera.main.ScreenToWorldPoint(mousePosition);
+        if (currentAimMode == AimMode.Gamepad)
+        {
+            // Right joystick direction
+            Vector2 stick = Gamepad.current.rightStick.ReadValue();
 
-        worldMousePosition.z = 0f;
+            if (stick.sqrMagnitude > stickThreshold * stickThreshold)
+            {
+                lastStickDirection = stick.normalized;
+            }
 
-        // Direction from anchor to mouse
-        Vector2 direction = (worldMousePosition - transform.position).normalized;
+            // Keep the last direction when stick is released
+            direction = lastStickDirection;
+        }
+        else
+        {
+            // ---------------------------
+            // MOUSE AIMING
+            // ---------------------------
+            Vector3 mousePosition =
+                Mouse.current.position.ReadValue();
 
-        // Distance from anchor
+            Vector3 worldMousePosition =
+                mainCamera.ScreenToWorldPoint(mousePosition);
+
+            worldMousePosition.z = 0f;
+
+            direction =
+                (worldMousePosition - transform.position).normalized;
+        }
+
+        // ---------------------------
+        // MOVE AIM LINE AROUND ANCHOR
+        // ---------------------------
+
         float radius = 1.5f;
 
-        // Move the aim line around the anchor
         AnchorAimLine.transform.localPosition =
             direction * radius;
 
@@ -67,7 +151,7 @@ public class AnchorScript : MonoBehaviour
             Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         AnchorAimLine.transform.rotation =
-            Quaternion.Euler(0f, 0f, angle - 90);
+            Quaternion.Euler(0f, 0f, angle - 90f);
     }
 
     public Vector2 AnchorActivate()
@@ -87,15 +171,14 @@ public class AnchorScript : MonoBehaviour
 
         VirtualCamera.Follow = transform;
         AnchorAimLine.SetActive(true);
+        TogglePlayer(true);
 
-
-
-        // Wait until ThrowAction changes anchorState to false
         yield return new WaitUntil(() => anchorState == false);
 
         Time.timeScale = 1f;
 
         AnchorAimLine.SetActive(false);
+        TogglePlayer(false);
         VirtualCamera.Follow = player.transform;
 
         transposer.m_XDamping = 1f;
@@ -104,7 +187,14 @@ public class AnchorScript : MonoBehaviour
 
     private Vector2 GetAimDirection()
     {
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
+        if (currentAimMode == AimMode.Gamepad)
+        {
+            return lastStickDirection;
+        }
+
+        // Mouse
+        Vector3 mousePosition =
+            Mouse.current.position.ReadValue();
 
         Vector3 worldMousePosition =
             mainCamera.ScreenToWorldPoint(mousePosition);
@@ -115,5 +205,19 @@ public class AnchorScript : MonoBehaviour
             worldMousePosition - transform.position;
 
         return direction.normalized;
+    }
+
+    private void TogglePlayer(bool on)
+    {
+        if (on)
+        {
+            player.GetComponent<PlayerAttack>().enabled = false;
+            player.transform.GetChild(2).gameObject.SetActive(false);
+        }
+        else
+        {
+            player.GetComponent<PlayerAttack>().enabled = true;
+            player.transform.GetChild(2).gameObject.SetActive(true);
+        }
     }
 }
