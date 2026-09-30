@@ -17,8 +17,10 @@ public class PlayerAttack : MonoBehaviour
     private float daggerCooldown = 2.5f;
     static public float maxDaggerCooldown = 2.5f;
     public AudioClip cooldownSound;
+    Animator anim;
 
     public InputActionReference ThrowAction;
+    public InputActionReference SlashAction;
     public Cursor CursorScript;
 
     public event Action<float> OnCooldownChanged;
@@ -29,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,6 +43,13 @@ public class PlayerAttack : MonoBehaviour
             daggerCooldown = 0f;
 
             OnCooldownStarted?.Invoke();
+        }
+
+        if (SlashAction.action.triggered)
+        {
+            anim.SetBool("isSlashing", true);
+            anim.SetBool("isFalling", false);
+            StartCoroutine(airSlash(0.75f));
         }
 
         if (daggerCooldown < maxDaggerCooldown)
@@ -80,4 +90,13 @@ public class PlayerAttack : MonoBehaviour
         OnCooldownChanged?.Invoke(1f);
         OnCooldownComplete?.Invoke();
     }
+
+    public IEnumerator airSlash(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        anim.SetBool("isSlashing", false);
+        anim.SetBool("isFalling", true);
+    }
+
+
 }

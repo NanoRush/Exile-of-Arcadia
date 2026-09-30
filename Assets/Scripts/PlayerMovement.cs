@@ -146,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isJumping", false);
             anim.SetBool("isFalling", false);
             anim.SetBool("isSliding", false);
+            anim.SetBool("isSlashing", false);
         }
 
         if(!wallJumping){    
