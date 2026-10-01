@@ -131,8 +131,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if(rb.linearVelocityY <= 0f)
             {
-                anim.SetBool("isFalling", true);
-                anim.SetBool("isJumping", false);
+                if(anim.GetBool("isSlashing") != true)
+                {
+                    anim.SetBool("isFalling", true);
+                    anim.SetBool("isJumping", false);
+                }
             }
             else
             {
@@ -299,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
         Invoke(nameof(stopTeleport), 0.5f);
     }
 
-    private bool isGrounded()
+    public bool isGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.28f, 0.48f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
@@ -321,6 +324,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSliding = true;
             anim.SetBool("isSliding", true);
+            anim.SetBool("isSlashing", false);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -wallSlidingSpeed, float.MaxValue));
             teleporting = false;
         }

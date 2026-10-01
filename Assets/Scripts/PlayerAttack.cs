@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private int daggerCount = 0;
     private AudioSource source;
     public AudioClip daggerSwipeSound;
+    private PlayerMovement playerMovement;
 
     private float daggerCooldown = 2.5f;
     static public float maxDaggerCooldown = 2.5f;
@@ -27,11 +28,14 @@ public class PlayerAttack : MonoBehaviour
     public event Action OnCooldownComplete;
     public event Action OnCooldownStarted;
 
+    private bool isSlashing = false;
+
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -45,11 +49,12 @@ public class PlayerAttack : MonoBehaviour
             OnCooldownStarted?.Invoke();
         }
 
-        if (SlashAction.action.triggered)
+        if (SlashAction.action.triggered && !isSlashing && daggerCount == 0 && !PauseMenu.isPaused && !playerMovement.isGrounded())
         {
+            isSlashing = true;
             anim.SetBool("isSlashing", true);
             anim.SetBool("isFalling", false);
-            StartCoroutine(airSlash(0.75f));
+            StartCoroutine(airSlash(0.375f));
         }
 
         if (daggerCooldown < maxDaggerCooldown)
@@ -96,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         anim.SetBool("isSlashing", false);
         anim.SetBool("isFalling", true);
+        isSlashing = false;
     }
-
 
 }
