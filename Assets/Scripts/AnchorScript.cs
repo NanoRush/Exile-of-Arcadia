@@ -41,6 +41,8 @@ public class AnchorScript : MonoBehaviour
         transposer = VirtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         mainCamera = Camera.main;
 
+        mainCamera.GetComponent<CinemachineBrain>().m_IgnoreTimeScale = true;
+
         if (Mouse.current != null)
             lastMousePos = Mouse.current.position.ReadValue();
     }
@@ -161,29 +163,39 @@ public class AnchorScript : MonoBehaviour
     }
 
     private IEnumerator AnchorRoutine()
-    {
-        anchorState = true;
+{
+    anchorState = true;
 
-        Time.timeScale = 0.05f;
+    // Slow down gameplay
+    Time.timeScale = 0.05f;
 
-        transposer.m_XDamping = 0.05f;
-        transposer.m_YDamping = 0.05f;
+    // Higher damping = smoother/slower camera movement
+    transposer.m_XDamping = 0.8f;
+    transposer.m_YDamping = 0.8f;
 
-        VirtualCamera.Follow = transform;
-        AnchorAimLine.SetActive(true);
-        TogglePlayer(true);
+    VirtualCamera.Follow = transform;
+    AnchorAimLine.SetActive(true);
+    TogglePlayer(true);
 
-        yield return new WaitUntil(() => anchorState == false);
+    yield return new WaitUntil(() => anchorState == false);
 
-        Time.timeScale = 1f;
+    Time.timeScale = 1f;
 
-        AnchorAimLine.SetActive(false);
-        TogglePlayer(false);
-        VirtualCamera.Follow = player.transform;
+    AnchorAimLine.SetActive(false);
+    TogglePlayer(false);
 
-        transposer.m_XDamping = 1f;
-        transposer.m_YDamping = 1f;
-    }
+    // Smoothly return camera to player
+    transposer.m_XDamping = 0.8f;
+    transposer.m_YDamping = 0.8f;
+
+    VirtualCamera.Follow = player.transform;
+
+    // Give the camera time to smoothly follow player
+    yield return new WaitForSeconds(0.5f);
+
+    transposer.m_XDamping = 1f;
+    transposer.m_YDamping = 1f;
+}
 
     private Vector2 GetAimDirection()
     {
