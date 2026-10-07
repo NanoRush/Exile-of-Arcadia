@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
             isSlashing = true;
             anim.SetBool("isSlashing", true);
             anim.SetBool("isFalling", false);
-            StartCoroutine(airSlash(0.375f));
+            StartCoroutine(airSlash(0.367f));
         }
 
         if (daggerCooldown < maxDaggerCooldown)
