@@ -14,6 +14,7 @@ public class FinishPoint : MonoBehaviour
 
     public GameObject FinishMenu;
     public Button NextLevelButton;
+    public int currentLevel;
 
     private void Awake()
     {
@@ -50,7 +51,7 @@ public class FinishPoint : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(currentLevel + 1);
         Time.timeScale = 1f;
         PauseMenu.isPaused = false;
     }

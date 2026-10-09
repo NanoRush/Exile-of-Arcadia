@@ -235,6 +235,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void resetJump()
+    {
+        jumpCount = 0;
+    }
 
     void StopWallJump()
     {
