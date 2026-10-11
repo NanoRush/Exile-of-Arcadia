@@ -1752,7 +1752,7 @@ GameObject:
   - component: {fileID: 601355872}
   - component: {fileID: 601355871}
   m_Layer: 5
-  m_Name: LVL1 Image
+  m_Name: LVL2 Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4360,7 +4360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: rightTriggerButton
+  m_Text: Esc
 --- !u!222 &1335900494
 CanvasRenderer:
   m_ObjectHideFlags: 0

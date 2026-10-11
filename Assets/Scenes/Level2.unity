@@ -115965,6 +115965,38 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1625193679709371127, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
     - target: {fileID: 1753999356150157356, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: vibrationScript
       value: 
@@ -116016,6 +116048,70 @@ PrefabInstance:
     - target: {fileID: 4082425384297981257, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: QuitLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492649081414856751, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 87196968}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827971205346363545, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
+      propertyPath: m_Delegates.Array.data[3].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayOneShot
       objectReference: {fileID: 0}
     - target: {fileID: 4959315971931674135, guid: c36e82769a57faf408bc6ba5aa6cf969, type: 3}
       propertyPath: vibrationScript
