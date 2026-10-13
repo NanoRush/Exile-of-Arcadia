@@ -31,6 +31,7 @@ public class GlassScript : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             audioSource.PlayOneShot(clip);
             glassParticles.Play();
+            CameraImpactManager.Instance.DeathImpact();
             isShattered = true;
         }
     }

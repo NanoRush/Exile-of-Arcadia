@@ -79,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
             col.enabled = false;
             gameObject.transform.GetChild(2).gameObject.SetActive(false);
             canvas.transform.GetChild(0).gameObject.SetActive(true);
+            CameraImpactManager.Instance.DeathImpact();
 
             Instantiate(deathWave, transform.position, Quaternion.identity);
             audioSource.PlayOneShot(deathSound);

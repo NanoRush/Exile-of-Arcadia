@@ -16,6 +16,11 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Load(2));
     }
 
+    public void PlayLevel3()
+    {
+        StartCoroutine(Load(3));
+    }
+
     public void QuitGame()
     {
         Application.Quit();

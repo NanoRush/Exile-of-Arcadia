@@ -26,6 +26,7 @@ public class MainMenuUI : MonoBehaviour
 
     public CanvasGroup level1Group;
     public CanvasGroup level2Group;
+    public CanvasGroup level3Group;
 
     public RectTransform levelDetailsPanel;     // The thing that moves
 
@@ -38,6 +39,8 @@ public class MainMenuUI : MonoBehaviour
     {
         canvasGroup.DOFade(1f, defaultDuration);
         LevelsOn = false;
+        LevelSelectGroup.interactable = false;
+        LevelSelectGroup.blocksRaycasts = false;
 
         detailsOriginalPos = levelDetailsPanel.anchoredPosition;
 
@@ -47,6 +50,7 @@ public class MainMenuUI : MonoBehaviour
 
         level1Group.alpha = 0f;
         level2Group.alpha = 0f;
+        level3Group.alpha = 0f;
     }
 
     public void SwitchToSettings()
@@ -126,6 +130,10 @@ public class MainMenuUI : MonoBehaviour
         {
             LevelsOn = true;
 
+            // Enable interaction when opening
+            LevelSelectGroup.interactable = true;
+            LevelSelectGroup.blocksRaycasts = true;
+
             LevelSelectGroup.DOFade(1f, fadeDuration);
 
             for (int x = 0; x < LevelSelectGroup.transform.childCount; x++)
@@ -156,12 +164,17 @@ public class MainMenuUI : MonoBehaviour
 
             DOVirtual.DelayedCall(fadeDuration * 0.2f, () =>
             {
-                firstButton.Select();
+                if (LevelsOn)
+                    firstButton.Select();
             });
         }
         else
         {
             LevelsOn = false;
+
+            // Disable interaction immediately when closing
+            LevelSelectGroup.interactable = false;
+            LevelSelectGroup.blocksRaycasts = false;
 
             LevelSelectGroup.DOFade(0f, fadeDuration);
 
@@ -185,6 +198,7 @@ public class MainMenuUI : MonoBehaviour
                      });
             }
 
+            // Return selection to Play button
             playButton.Select();
         }
     }
@@ -225,21 +239,29 @@ public class MainMenuUI : MonoBehaviour
         // Prevent reselecting same level
         if (currentLevel == levelIndex) return;
 
-        currentLevel = levelIndex;
-
-        CanvasGroup targetGroup = null;
         CanvasGroup previousGroup = null;
+        CanvasGroup targetGroup = null;
 
-        if (levelIndex == 1)
-        {
-            targetGroup = level1Group;
-            previousGroup = level2Group;
-        }
-        else if (levelIndex == 2)
-        {
-            targetGroup = level2Group;
+        // Get the previous level's group
+        if (currentLevel == 1)
             previousGroup = level1Group;
-        }
+        else if (currentLevel == 2)
+            previousGroup = level2Group;
+        else if (currentLevel == 3)
+            previousGroup = level3Group;
+
+        // Get the selected level's group
+        if (levelIndex == 1)
+            targetGroup = level1Group;
+        else if (levelIndex == 2)
+            targetGroup = level2Group;
+        else if (levelIndex == 3)
+            targetGroup = level3Group;
+
+        // Ignore invalid level indexes
+        if (targetGroup == null) return;
+
+        currentLevel = levelIndex;
 
         // Kill previous animations
         if (detailsSequence != null && detailsSequence.IsActive())
@@ -247,7 +269,7 @@ public class MainMenuUI : MonoBehaviour
 
         detailsSequence = DOTween.Sequence();
 
-        // Fade OUT previous
+        // Fade out the previous level
         if (previousGroup != null)
         {
             detailsSequence.Append(
@@ -255,13 +277,10 @@ public class MainMenuUI : MonoBehaviour
             );
         }
 
-        // Fade IN new
-        if (targetGroup != null)
-        {
-            detailsSequence.Append(
-                targetGroup.DOFade(1f, fadeDuration * 0.5f)
-            );
-        }
+        // Fade in the selected level
+        detailsSequence.Append(
+            targetGroup.DOFade(1f, fadeDuration * 0.5f)
+        );
     }
 
 

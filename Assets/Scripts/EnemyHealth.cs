@@ -39,6 +39,13 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health = health - damage;
+        if (CameraImpactManager.Instance != null)
+        {
+            if (health <= 0)
+            {
+                CameraImpactManager.Instance.HitImpact();
+            }
+        }
     }
 
     public void Respawn()
