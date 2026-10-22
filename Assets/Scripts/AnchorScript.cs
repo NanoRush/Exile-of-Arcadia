@@ -158,7 +158,6 @@ public class AnchorScript : MonoBehaviour
 
     public Vector2 AnchorActivate()
     {
-        CameraImpactManager.Instance.HitImpact();
         StartCoroutine(AnchorRoutine());
         return aimDirection;
     }
