@@ -167922,6 +167922,7 @@ MonoBehaviour:
   - x: 51.22
     y: 159.63
   teleportTrail: {fileID: 2038093238}
+  audioClip: {fileID: 8300000, guid: 84e427d6b66ab4066b6a4dcd0ce819ee, type: 3}
 --- !u!212 &2974124092498174023
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -168479,6 +168480,14 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 403879740}
+    - target: {fileID: 5320199203784896470, guid: dfdb4868f9332194c96529959612e06f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306069895305156188, guid: dfdb4868f9332194c96529959612e06f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6446203846682665702, guid: dfdb4868f9332194c96529959612e06f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.41

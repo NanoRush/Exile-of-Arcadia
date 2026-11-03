@@ -20,10 +20,14 @@ public class WarperScript : MonoBehaviour
     private int previousHealth;
     private int currentWarpIndex = 0;
 
+    public AudioClip audioClip;
+    private AudioSource AudioSource;
+
     private void Start()
     {
         enemyHealth = GetComponent<EnemyHealth>();
         previousHealth = enemyHealth.health;
+        AudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -59,6 +63,8 @@ public class WarperScript : MonoBehaviour
 
         // Move Warper
         transform.position = newPosition;
+        AudioSource.PlayOneShot(audioClip);
+        CameraImpactManager.Instance.HitImpact();
 
         // Emit particles evenly between old and new positions
         for (int i = 0; i <= particleCount; i++)

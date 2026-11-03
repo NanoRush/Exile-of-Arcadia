@@ -29,6 +29,9 @@ public class PlayerHealth : MonoBehaviour
     public event Action<int> OnDeathCountChanged;
     public NotificationScript NotificationScript;
 
+    private Collider2D[] playerColliders;
+    private Collider2D[] enemyColliders;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -124,6 +127,29 @@ public class PlayerHealth : MonoBehaviour
     public void DeathTextAppear()
     {
         OnPlayerRespawn?.Invoke();
+    }
+
+    public void SetInvincible(int state)
+    {
+        if (playerColliders == null)
+            playerColliders = GetComponentsInChildren<Collider2D>();
+
+        bool invincible = state == 1;
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            Collider2D[] enemyColliders = enemy.GetComponentsInChildren<Collider2D>();
+
+            foreach (Collider2D playerCol in playerColliders)
+            {
+                foreach (Collider2D enemyCol in enemyColliders)
+                {
+                    Physics2D.IgnoreCollision(playerCol, enemyCol, invincible);
+                }
+            }
+        }
     }
 
 }
