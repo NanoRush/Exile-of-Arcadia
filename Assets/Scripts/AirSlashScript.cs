@@ -17,6 +17,7 @@ public class AirSlashScript : MonoBehaviour
     {
         if (collision.CompareTag("enemy"))
         {
+            HitStop.Instance.Freeze(0.05f);
             collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(1);
             playerMovement.resetJump();
             // Sharp upward bounce

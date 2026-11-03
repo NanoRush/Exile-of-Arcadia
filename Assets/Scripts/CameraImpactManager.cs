@@ -11,6 +11,11 @@ public class CameraImpactManager : MonoBehaviour
     [SerializeField] private float hitShake = 0.6f;
     [SerializeField] private float deathShake = 1.2f;
 
+    private void Start()
+    {
+        impulseSource.m_ImpulseDefinition.m_TimeEnvelope.m_SustainTime = 0.2f;
+    }
+
     private void Awake()
     {
         Instance = this;
