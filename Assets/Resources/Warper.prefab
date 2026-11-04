@@ -189,8 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   enemyType: Warper
   health: 3
-  explosion: {fileID: 100006, guid: 2e7e92bc7175b744ea40878dedfa79e4, type: 3}
-  audioClip: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
+  explosion: {fileID: 100006, guid: a49596ebf788acd4ab1281bffea444b1, type: 3}
+  audioClip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
 --- !u!82 &2565733493334498587
 AudioSource:
   m_ObjectHideFlags: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   warpPositions: []
   teleportTrail: {fileID: 6921480566309093270}
+  audioClip: {fileID: 8300000, guid: 84e427d6b66ab4066b6a4dcd0ce819ee, type: 3}
 --- !u!1001 &4342675762821779458
 PrefabInstance:
   m_ObjectHideFlags: 0
