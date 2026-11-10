@@ -3188,14 +3188,14 @@ RectTransform:
   m_GameObject: {fileID: 853824204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.3733034, y: 6.3733034, z: 6.3733034}
+  m_LocalScale: {x: 7.901255, y: 6.516499, z: 6.516499}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 817569474}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: 173}
+  m_AnchoredPosition: {x: -36, y: 142}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853824206
@@ -3218,7 +3218,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6367678624250204290, guid: f4b2631d34769324fa2e981af0330edb, type: 3}
+  m_Sprite: {fileID: -5140673714347342035, guid: cd24ddce4a7ee4d47851e32b67e938ae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5931,7 +5931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1673143924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5941,14 +5941,14 @@ RectTransform:
   m_GameObject: {fileID: 1673143923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2018522, y: 1.6225003, z: 1.2018522}
+  m_LocalScale: {x: 1.8579822, y: 1.1274161, z: 0.83512324}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 974477816}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -441}
+  m_AnchoredPosition: {x: -47, y: -21.99997}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673143925
@@ -5971,7 +5971,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cb5859b5e2f5a7f4bb129127e9aeab8a, type: 3}
+  m_Sprite: {fileID: -4873478047642080287, guid: 276c2e8488afafa40aa0a79412c0c727, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6391,7 +6391,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.16470589, g: 0.23137255, b: 0.32941177, a: 0}
+  m_BackGroundColor: {r: 0.054901965, g: 0.1764706, b: 0.24705884, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

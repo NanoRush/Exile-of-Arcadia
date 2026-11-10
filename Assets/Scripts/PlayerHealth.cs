@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
     private Collider2D[] playerColliders;
     private Collider2D[] enemyColliders;
+    private bool isInvincible;
 
     // Start is called before the first frame update
     void Start()
@@ -131,10 +132,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void SetInvincible(int state)
     {
+        isInvincible = state == 1;
+
         if (playerColliders == null)
             playerColliders = GetComponentsInChildren<Collider2D>();
-
-        bool invincible = state == 1;
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("enemy");
 
@@ -146,7 +147,14 @@ public class PlayerHealth : MonoBehaviour
             {
                 foreach (Collider2D enemyCol in enemyColliders)
                 {
-                    Physics2D.IgnoreCollision(playerCol, enemyCol, invincible);
+                    if (playerCol != null && enemyCol != null)
+                    {
+                        Physics2D.IgnoreCollision(
+                            playerCol,
+                            enemyCol,
+                            isInvincible
+                        );
+                    }
                 }
             }
         }
